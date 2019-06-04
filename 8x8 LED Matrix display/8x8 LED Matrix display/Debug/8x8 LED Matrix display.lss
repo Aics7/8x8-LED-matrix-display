@@ -1,0 +1,497 @@
+
+8x8 LED Matrix display.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000002c2  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000020  00800060  000002c2  00000356  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000050  00800080  00800080  00000376  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000376  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000003a8  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000108  00000000  00000000  000003e4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000011c8  00000000  00000000  000004ec  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000078a  00000000  00000000  000016b4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000765  00000000  00000000  00001e3e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000001f8  00000000  00000000  000025a4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000511  00000000  00000000  0000279c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000aae  00000000  00000000  00002cad  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000e8  00000000  00000000  0000375b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	1a c0       	rjmp	.+52     	; 0x36 <__ctors_end>
+   2:	34 c0       	rjmp	.+104    	; 0x6c <__bad_interrupt>
+   4:	33 c0       	rjmp	.+102    	; 0x6c <__bad_interrupt>
+   6:	32 c0       	rjmp	.+100    	; 0x6c <__bad_interrupt>
+   8:	31 c0       	rjmp	.+98     	; 0x6c <__bad_interrupt>
+   a:	30 c0       	rjmp	.+96     	; 0x6c <__bad_interrupt>
+   c:	2f c0       	rjmp	.+94     	; 0x6c <__bad_interrupt>
+   e:	2e c0       	rjmp	.+92     	; 0x6c <__bad_interrupt>
+  10:	2d c0       	rjmp	.+90     	; 0x6c <__bad_interrupt>
+  12:	2c c0       	rjmp	.+88     	; 0x6c <__bad_interrupt>
+  14:	2b c0       	rjmp	.+86     	; 0x6c <__bad_interrupt>
+  16:	2a c0       	rjmp	.+84     	; 0x6c <__bad_interrupt>
+  18:	29 c0       	rjmp	.+82     	; 0x6c <__bad_interrupt>
+  1a:	28 c0       	rjmp	.+80     	; 0x6c <__bad_interrupt>
+  1c:	27 c0       	rjmp	.+78     	; 0x6c <__bad_interrupt>
+  1e:	26 c0       	rjmp	.+76     	; 0x6c <__bad_interrupt>
+  20:	25 c0       	rjmp	.+74     	; 0x6c <__bad_interrupt>
+  22:	24 c0       	rjmp	.+72     	; 0x6c <__bad_interrupt>
+  24:	23 c0       	rjmp	.+70     	; 0x6c <__bad_interrupt>
+  26:	32 c1       	rjmp	.+612    	; 0x28c <max7219_digit+0x18>
+  28:	33 c1       	rjmp	.+614    	; 0x290 <max7219_digit+0x1c>
+  2a:	34 c1       	rjmp	.+616    	; 0x294 <max7219_digit+0x20>
+  2c:	35 c1       	rjmp	.+618    	; 0x298 <max7219_digit+0x24>
+  2e:	36 c1       	rjmp	.+620    	; 0x29c <max7219_digit+0x28>
+  30:	37 c1       	rjmp	.+622    	; 0x2a0 <max7219_digit+0x2c>
+  32:	38 c1       	rjmp	.+624    	; 0x2a4 <max7219_digit+0x30>
+  34:	39 c1       	rjmp	.+626    	; 0x2a8 <max7219_digit+0x34>
+
+00000036 <__ctors_end>:
+  36:	11 24       	eor	r1, r1
+  38:	1f be       	out	0x3f, r1	; 63
+  3a:	cf e5       	ldi	r28, 0x5F	; 95
+  3c:	d4 e0       	ldi	r29, 0x04	; 4
+  3e:	de bf       	out	0x3e, r29	; 62
+  40:	cd bf       	out	0x3d, r28	; 61
+
+00000042 <__do_copy_data>:
+  42:	10 e0       	ldi	r17, 0x00	; 0
+  44:	a0 e6       	ldi	r26, 0x60	; 96
+  46:	b0 e0       	ldi	r27, 0x00	; 0
+  48:	e2 ec       	ldi	r30, 0xC2	; 194
+  4a:	f2 e0       	ldi	r31, 0x02	; 2
+  4c:	02 c0       	rjmp	.+4      	; 0x52 <__do_copy_data+0x10>
+  4e:	05 90       	lpm	r0, Z+
+  50:	0d 92       	st	X+, r0
+  52:	a0 38       	cpi	r26, 0x80	; 128
+  54:	b1 07       	cpc	r27, r17
+  56:	d9 f7       	brne	.-10     	; 0x4e <__do_copy_data+0xc>
+
+00000058 <__do_clear_bss>:
+  58:	20 e0       	ldi	r18, 0x00	; 0
+  5a:	a0 e8       	ldi	r26, 0x80	; 128
+  5c:	b0 e0       	ldi	r27, 0x00	; 0
+  5e:	01 c0       	rjmp	.+2      	; 0x62 <.do_clear_bss_start>
+
+00000060 <.do_clear_bss_loop>:
+  60:	1d 92       	st	X+, r1
+
+00000062 <.do_clear_bss_start>:
+  62:	a0 3d       	cpi	r26, 0xD0	; 208
+  64:	b2 07       	cpc	r27, r18
+  66:	e1 f7       	brne	.-8      	; 0x60 <.do_clear_bss_loop>
+  68:	02 d0       	rcall	.+4      	; 0x6e <main>
+  6a:	29 c1       	rjmp	.+594    	; 0x2be <_exit>
+
+0000006c <__bad_interrupt>:
+  6c:	c9 cf       	rjmp	.-110    	; 0x0 <__vectors>
+
+0000006e <main>:
+
+int main(void)
+{
+	
+	
+	max7219_init();
+  6e:	20 d1       	rcall	.+576    	; 0x2b0 <max7219_init>
+
+	uint8_t ic = 0;
+	
+	for(ic=0; ic<MAX7219_ICNUMBER; ic++) {
+  70:	c0 e0       	ldi	r28, 0x00	; 0
+		max7219_shutdown(ic, 1); //power on
+  72:	61 e0       	ldi	r22, 0x01	; 1
+  74:	8c 2f       	mov	r24, r28
+  76:	6a d0       	rcall	.+212    	; 0x14c <max7219_shutdown>
+		max7219_test(ic, 0); //test mode off
+  78:	60 e0       	ldi	r22, 0x00	; 0
+  7a:	8c 2f       	mov	r24, r28
+  7c:	73 d0       	rcall	.+230    	; 0x164 <max7219_test>
+		max7219_decode(ic, 0); //use led matrix
+  7e:	60 e0       	ldi	r22, 0x00	; 0
+  80:	8c 2f       	mov	r24, r28
+  82:	7c d0       	rcall	.+248    	; 0x17c <max7219_decode>
+		max7219_intensity(ic, 15); //intensity
+  84:	6f e0       	ldi	r22, 0x0F	; 15
+  86:	8c 2f       	mov	r24, r28
+  88:	67 d0       	rcall	.+206    	; 0x158 <max7219_intensity>
+		max7219_scanlimit(ic, 7); //set number of digit to drive
+  8a:	67 e0       	ldi	r22, 0x07	; 7
+  8c:	8c 2f       	mov	r24, r28
+  8e:	70 d0       	rcall	.+224    	; 0x170 <max7219_scanlimit>
+	
+	max7219_init();
+
+	uint8_t ic = 0;
+	
+	for(ic=0; ic<MAX7219_ICNUMBER; ic++) {
+  90:	cf 5f       	subi	r28, 0xFF	; 255
+  92:	ca 30       	cpi	r28, 0x0A	; 10
+  94:	71 f7       	brne	.-36     	; 0x72 <main+0x4>
+  96:	00 e6       	ldi	r16, 0x60	; 96
+  98:	10 e0       	ldi	r17, 0x00	; 0
+  9a:	c0 e0       	ldi	r28, 0x00	; 0
+//infinite loop
+	while (1)
+	{
+		
+		for (int i = 0; i<8; i++){
+			max7219_digit(0, i, (G[i]));
+  9c:	f8 01       	movw	r30, r16
+  9e:	40 81       	ld	r20, Z
+  a0:	0c 5f       	subi	r16, 0xFC	; 252
+  a2:	1f 4f       	sbci	r17, 0xFF	; 255
+  a4:	6c 2f       	mov	r22, r28
+  a6:	80 e0       	ldi	r24, 0x00	; 0
+  a8:	e5 d0       	rcall	.+458    	; 0x274 <max7219_digit>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  aa:	87 ea       	ldi	r24, 0xA7	; 167
+  ac:	91 e6       	ldi	r25, 0x61	; 97
+  ae:	01 97       	sbiw	r24, 0x01	; 1
+  b0:	f1 f7       	brne	.-4      	; 0xae <main+0x40>
+  b2:	00 c0       	rjmp	.+0      	; 0xb4 <main+0x46>
+  b4:	00 00       	nop
+  b6:	cf 5f       	subi	r28, 0xFF	; 255
+
+//infinite loop
+	while (1)
+	{
+		
+		for (int i = 0; i<8; i++){
+  b8:	c8 30       	cpi	r28, 0x08	; 8
+  ba:	81 f7       	brne	.-32     	; 0x9c <main+0x2e>
+  bc:	ec cf       	rjmp	.-40     	; 0x96 <main+0x28>
+
+000000be <max7219_shiftout>:
+		case 7:
+			value = max7219_getdigit7(icnum);
+			break;
+	}
+	return value;
+}
+  be:	47 e0       	ldi	r20, 0x07	; 7
+  c0:	50 e0       	ldi	r21, 0x00	; 0
+  c2:	61 e0       	ldi	r22, 0x01	; 1
+  c4:	70 e0       	ldi	r23, 0x00	; 0
+  c6:	90 e0       	ldi	r25, 0x00	; 0
+  c8:	93 98       	cbi	0x12, 3	; 18
+  ca:	9b 01       	movw	r18, r22
+  cc:	04 2e       	mov	r0, r20
+  ce:	02 c0       	rjmp	.+4      	; 0xd4 <max7219_shiftout+0x16>
+  d0:	22 0f       	add	r18, r18
+  d2:	33 1f       	adc	r19, r19
+  d4:	0a 94       	dec	r0
+  d6:	e2 f7       	brpl	.-8      	; 0xd0 <max7219_shiftout+0x12>
+  d8:	28 23       	and	r18, r24
+  da:	39 23       	and	r19, r25
+  dc:	04 2e       	mov	r0, r20
+  de:	02 c0       	rjmp	.+4      	; 0xe4 <max7219_shiftout+0x26>
+  e0:	35 95       	asr	r19
+  e2:	27 95       	ror	r18
+  e4:	0a 94       	dec	r0
+  e6:	e2 f7       	brpl	.-8      	; 0xe0 <max7219_shiftout+0x22>
+  e8:	22 23       	and	r18, r18
+  ea:	11 f0       	breq	.+4      	; 0xf0 <max7219_shiftout+0x32>
+  ec:	92 9a       	sbi	0x12, 2	; 18
+  ee:	01 c0       	rjmp	.+2      	; 0xf2 <max7219_shiftout+0x34>
+  f0:	92 98       	cbi	0x12, 2	; 18
+  f2:	93 9a       	sbi	0x12, 3	; 18
+  f4:	41 50       	subi	r20, 0x01	; 1
+  f6:	51 09       	sbc	r21, r1
+  f8:	38 f7       	brcc	.-50     	; 0xc8 <max7219_shiftout+0xa>
+  fa:	08 95       	ret
+
+000000fc <max7219_send>:
+  fc:	0f 93       	push	r16
+  fe:	1f 93       	push	r17
+ 100:	cf 93       	push	r28
+ 102:	df 93       	push	r29
+ 104:	8a 30       	cpi	r24, 0x0A	; 10
+ 106:	e8 f4       	brcc	.+58     	; 0x142 <max7219_send+0x46>
+ 108:	14 2f       	mov	r17, r20
+ 10a:	06 2f       	mov	r16, r22
+ 10c:	d8 2f       	mov	r29, r24
+ 10e:	94 98       	cbi	0x12, 4	; 18
+ 110:	89 30       	cpi	r24, 0x09	; 9
+ 112:	40 f4       	brcc	.+16     	; 0x124 <max7219_send+0x28>
+ 114:	c8 2f       	mov	r28, r24
+ 116:	80 e0       	ldi	r24, 0x00	; 0
+ 118:	d2 df       	rcall	.-92     	; 0xbe <max7219_shiftout>
+ 11a:	80 e0       	ldi	r24, 0x00	; 0
+ 11c:	d0 df       	rcall	.-96     	; 0xbe <max7219_shiftout>
+ 11e:	cf 5f       	subi	r28, 0xFF	; 255
+ 120:	c9 30       	cpi	r28, 0x09	; 9
+ 122:	c9 f7       	brne	.-14     	; 0x116 <max7219_send+0x1a>
+ 124:	80 2f       	mov	r24, r16
+ 126:	cb df       	rcall	.-106    	; 0xbe <max7219_shiftout>
+ 128:	81 2f       	mov	r24, r17
+ 12a:	c9 df       	rcall	.-110    	; 0xbe <max7219_shiftout>
+ 12c:	dd 23       	and	r29, r29
+ 12e:	41 f0       	breq	.+16     	; 0x140 <max7219_send+0x44>
+ 130:	c0 e0       	ldi	r28, 0x00	; 0
+ 132:	80 e0       	ldi	r24, 0x00	; 0
+ 134:	c4 df       	rcall	.-120    	; 0xbe <max7219_shiftout>
+ 136:	80 e0       	ldi	r24, 0x00	; 0
+ 138:	c2 df       	rcall	.-124    	; 0xbe <max7219_shiftout>
+ 13a:	cf 5f       	subi	r28, 0xFF	; 255
+ 13c:	dc 13       	cpse	r29, r28
+ 13e:	f9 cf       	rjmp	.-14     	; 0x132 <max7219_send+0x36>
+ 140:	94 9a       	sbi	0x12, 4	; 18
+ 142:	df 91       	pop	r29
+ 144:	cf 91       	pop	r28
+ 146:	1f 91       	pop	r17
+ 148:	0f 91       	pop	r16
+ 14a:	08 95       	ret
+
+0000014c <max7219_shutdown>:
+ 14c:	62 30       	cpi	r22, 0x02	; 2
+ 14e:	18 f4       	brcc	.+6      	; 0x156 <max7219_shutdown+0xa>
+ 150:	46 2f       	mov	r20, r22
+ 152:	6c e0       	ldi	r22, 0x0C	; 12
+ 154:	d3 df       	rcall	.-90     	; 0xfc <max7219_send>
+ 156:	08 95       	ret
+
+00000158 <max7219_intensity>:
+ 158:	60 31       	cpi	r22, 0x10	; 16
+ 15a:	18 f4       	brcc	.+6      	; 0x162 <max7219_intensity+0xa>
+ 15c:	46 2f       	mov	r20, r22
+ 15e:	6a e0       	ldi	r22, 0x0A	; 10
+ 160:	cd df       	rcall	.-102    	; 0xfc <max7219_send>
+ 162:	08 95       	ret
+
+00000164 <max7219_test>:
+ 164:	62 30       	cpi	r22, 0x02	; 2
+ 166:	18 f4       	brcc	.+6      	; 0x16e <max7219_test+0xa>
+ 168:	46 2f       	mov	r20, r22
+ 16a:	6f e0       	ldi	r22, 0x0F	; 15
+ 16c:	c7 df       	rcall	.-114    	; 0xfc <max7219_send>
+ 16e:	08 95       	ret
+
+00000170 <max7219_scanlimit>:
+ 170:	68 30       	cpi	r22, 0x08	; 8
+ 172:	18 f4       	brcc	.+6      	; 0x17a <max7219_scanlimit+0xa>
+ 174:	46 2f       	mov	r20, r22
+ 176:	6b e0       	ldi	r22, 0x0B	; 11
+ 178:	c1 df       	rcall	.-126    	; 0xfc <max7219_send>
+ 17a:	08 95       	ret
+
+0000017c <max7219_decode>:
+ 17c:	46 2f       	mov	r20, r22
+ 17e:	69 e0       	ldi	r22, 0x09	; 9
+ 180:	bd df       	rcall	.-134    	; 0xfc <max7219_send>
+ 182:	08 95       	ret
+
+00000184 <max7219_digit0>:
+ 184:	46 2f       	mov	r20, r22
+ 186:	e8 2f       	mov	r30, r24
+ 188:	f0 e0       	ldi	r31, 0x00	; 0
+ 18a:	ee 0f       	add	r30, r30
+ 18c:	ff 1f       	adc	r31, r31
+ 18e:	ee 0f       	add	r30, r30
+ 190:	ff 1f       	adc	r31, r31
+ 192:	ee 0f       	add	r30, r30
+ 194:	ff 1f       	adc	r31, r31
+ 196:	e0 58       	subi	r30, 0x80	; 128
+ 198:	ff 4f       	sbci	r31, 0xFF	; 255
+ 19a:	60 83       	st	Z, r22
+ 19c:	61 e0       	ldi	r22, 0x01	; 1
+ 19e:	ae df       	rcall	.-164    	; 0xfc <max7219_send>
+ 1a0:	08 95       	ret
+
+000001a2 <max7219_digit1>:
+ 1a2:	46 2f       	mov	r20, r22
+ 1a4:	e8 2f       	mov	r30, r24
+ 1a6:	f0 e0       	ldi	r31, 0x00	; 0
+ 1a8:	ee 0f       	add	r30, r30
+ 1aa:	ff 1f       	adc	r31, r31
+ 1ac:	ee 0f       	add	r30, r30
+ 1ae:	ff 1f       	adc	r31, r31
+ 1b0:	ee 0f       	add	r30, r30
+ 1b2:	ff 1f       	adc	r31, r31
+ 1b4:	e0 58       	subi	r30, 0x80	; 128
+ 1b6:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1b8:	61 83       	std	Z+1, r22	; 0x01
+ 1ba:	62 e0       	ldi	r22, 0x02	; 2
+ 1bc:	9f df       	rcall	.-194    	; 0xfc <max7219_send>
+ 1be:	08 95       	ret
+
+000001c0 <max7219_digit2>:
+ 1c0:	46 2f       	mov	r20, r22
+ 1c2:	e8 2f       	mov	r30, r24
+ 1c4:	f0 e0       	ldi	r31, 0x00	; 0
+ 1c6:	ee 0f       	add	r30, r30
+ 1c8:	ff 1f       	adc	r31, r31
+ 1ca:	ee 0f       	add	r30, r30
+ 1cc:	ff 1f       	adc	r31, r31
+ 1ce:	ee 0f       	add	r30, r30
+ 1d0:	ff 1f       	adc	r31, r31
+ 1d2:	e0 58       	subi	r30, 0x80	; 128
+ 1d4:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1d6:	62 83       	std	Z+2, r22	; 0x02
+ 1d8:	63 e0       	ldi	r22, 0x03	; 3
+ 1da:	90 df       	rcall	.-224    	; 0xfc <max7219_send>
+ 1dc:	08 95       	ret
+
+000001de <max7219_digit3>:
+ 1de:	46 2f       	mov	r20, r22
+ 1e0:	e8 2f       	mov	r30, r24
+ 1e2:	f0 e0       	ldi	r31, 0x00	; 0
+ 1e4:	ee 0f       	add	r30, r30
+ 1e6:	ff 1f       	adc	r31, r31
+ 1e8:	ee 0f       	add	r30, r30
+ 1ea:	ff 1f       	adc	r31, r31
+ 1ec:	ee 0f       	add	r30, r30
+ 1ee:	ff 1f       	adc	r31, r31
+ 1f0:	e0 58       	subi	r30, 0x80	; 128
+ 1f2:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1f4:	63 83       	std	Z+3, r22	; 0x03
+ 1f6:	64 e0       	ldi	r22, 0x04	; 4
+ 1f8:	81 df       	rcall	.-254    	; 0xfc <max7219_send>
+ 1fa:	08 95       	ret
+
+000001fc <max7219_digit4>:
+ 1fc:	46 2f       	mov	r20, r22
+ 1fe:	e8 2f       	mov	r30, r24
+ 200:	f0 e0       	ldi	r31, 0x00	; 0
+ 202:	ee 0f       	add	r30, r30
+ 204:	ff 1f       	adc	r31, r31
+ 206:	ee 0f       	add	r30, r30
+ 208:	ff 1f       	adc	r31, r31
+ 20a:	ee 0f       	add	r30, r30
+ 20c:	ff 1f       	adc	r31, r31
+ 20e:	e0 58       	subi	r30, 0x80	; 128
+ 210:	ff 4f       	sbci	r31, 0xFF	; 255
+ 212:	64 83       	std	Z+4, r22	; 0x04
+ 214:	65 e0       	ldi	r22, 0x05	; 5
+ 216:	72 df       	rcall	.-284    	; 0xfc <max7219_send>
+ 218:	08 95       	ret
+
+0000021a <max7219_digit5>:
+ 21a:	46 2f       	mov	r20, r22
+ 21c:	e8 2f       	mov	r30, r24
+ 21e:	f0 e0       	ldi	r31, 0x00	; 0
+ 220:	ee 0f       	add	r30, r30
+ 222:	ff 1f       	adc	r31, r31
+ 224:	ee 0f       	add	r30, r30
+ 226:	ff 1f       	adc	r31, r31
+ 228:	ee 0f       	add	r30, r30
+ 22a:	ff 1f       	adc	r31, r31
+ 22c:	e0 58       	subi	r30, 0x80	; 128
+ 22e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 230:	65 83       	std	Z+5, r22	; 0x05
+ 232:	66 e0       	ldi	r22, 0x06	; 6
+ 234:	63 df       	rcall	.-314    	; 0xfc <max7219_send>
+ 236:	08 95       	ret
+
+00000238 <max7219_digit6>:
+ 238:	46 2f       	mov	r20, r22
+ 23a:	e8 2f       	mov	r30, r24
+ 23c:	f0 e0       	ldi	r31, 0x00	; 0
+ 23e:	ee 0f       	add	r30, r30
+ 240:	ff 1f       	adc	r31, r31
+ 242:	ee 0f       	add	r30, r30
+ 244:	ff 1f       	adc	r31, r31
+ 246:	ee 0f       	add	r30, r30
+ 248:	ff 1f       	adc	r31, r31
+ 24a:	e0 58       	subi	r30, 0x80	; 128
+ 24c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 24e:	66 83       	std	Z+6, r22	; 0x06
+ 250:	67 e0       	ldi	r22, 0x07	; 7
+ 252:	54 df       	rcall	.-344    	; 0xfc <max7219_send>
+ 254:	08 95       	ret
+
+00000256 <max7219_digit7>:
+ 256:	46 2f       	mov	r20, r22
+ 258:	e8 2f       	mov	r30, r24
+ 25a:	f0 e0       	ldi	r31, 0x00	; 0
+ 25c:	ee 0f       	add	r30, r30
+ 25e:	ff 1f       	adc	r31, r31
+ 260:	ee 0f       	add	r30, r30
+ 262:	ff 1f       	adc	r31, r31
+ 264:	ee 0f       	add	r30, r30
+ 266:	ff 1f       	adc	r31, r31
+ 268:	e0 58       	subi	r30, 0x80	; 128
+ 26a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 26c:	67 83       	std	Z+7, r22	; 0x07
+ 26e:	68 e0       	ldi	r22, 0x08	; 8
+ 270:	45 df       	rcall	.-374    	; 0xfc <max7219_send>
+ 272:	08 95       	ret
+
+00000274 <max7219_digit>:
+ 274:	0f 93       	push	r16
+ 276:	1f 93       	push	r17
+ 278:	06 2f       	mov	r16, r22
+ 27a:	10 e0       	ldi	r17, 0x00	; 0
+ 27c:	08 30       	cpi	r16, 0x08	; 8
+ 27e:	11 05       	cpc	r17, r1
+ 280:	a0 f4       	brcc	.+40     	; 0x2aa <max7219_digit+0x36>
+ 282:	64 2f       	mov	r22, r20
+ 284:	f8 01       	movw	r30, r16
+ 286:	ed 5e       	subi	r30, 0xED	; 237
+ 288:	ff 4f       	sbci	r31, 0xFF	; 255
+ 28a:	09 94       	ijmp
+ 28c:	7b df       	rcall	.-266    	; 0x184 <max7219_digit0>
+ 28e:	0d c0       	rjmp	.+26     	; 0x2aa <max7219_digit+0x36>
+ 290:	88 df       	rcall	.-240    	; 0x1a2 <max7219_digit1>
+ 292:	0b c0       	rjmp	.+22     	; 0x2aa <max7219_digit+0x36>
+ 294:	95 df       	rcall	.-214    	; 0x1c0 <max7219_digit2>
+ 296:	09 c0       	rjmp	.+18     	; 0x2aa <max7219_digit+0x36>
+ 298:	a2 df       	rcall	.-188    	; 0x1de <max7219_digit3>
+ 29a:	07 c0       	rjmp	.+14     	; 0x2aa <max7219_digit+0x36>
+ 29c:	af df       	rcall	.-162    	; 0x1fc <max7219_digit4>
+ 29e:	05 c0       	rjmp	.+10     	; 0x2aa <max7219_digit+0x36>
+ 2a0:	bc df       	rcall	.-136    	; 0x21a <max7219_digit5>
+ 2a2:	03 c0       	rjmp	.+6      	; 0x2aa <max7219_digit+0x36>
+ 2a4:	c9 df       	rcall	.-110    	; 0x238 <max7219_digit6>
+ 2a6:	01 c0       	rjmp	.+2      	; 0x2aa <max7219_digit+0x36>
+ 2a8:	d6 df       	rcall	.-84     	; 0x256 <max7219_digit7>
+ 2aa:	1f 91       	pop	r17
+ 2ac:	0f 91       	pop	r16
+ 2ae:	08 95       	ret
+
+000002b0 <max7219_init>:
+/*
+ * init the shift register
+ */
+void max7219_init() {
+	//output
+	MAX7219_DINDDR |= (1 << MAX7219_DININPUT);
+ 2b0:	8a 9a       	sbi	0x11, 2	; 17
+	MAX7219_CLKDDR |= (1 << MAX7219_CLKINPUT);
+ 2b2:	8b 9a       	sbi	0x11, 3	; 17
+	MAX7219_LOADDDR |= (1 << MAX7219_LOADINPUT);
+ 2b4:	8c 9a       	sbi	0x11, 4	; 17
+	//low
+	MAX7219_DINPORT &= ~(1 << MAX7219_DININPUT);
+ 2b6:	92 98       	cbi	0x12, 2	; 18
+	MAX7219_CLKPORT &= ~(1 << MAX7219_CLKINPUT);
+ 2b8:	93 98       	cbi	0x12, 3	; 18
+	MAX7219_LOADPORT &= ~(1 << MAX7219_LOADINPUT);
+ 2ba:	94 98       	cbi	0x12, 4	; 18
+ 2bc:	08 95       	ret
+
+000002be <_exit>:
+ 2be:	f8 94       	cli
+
+000002c0 <__stop_program>:
+ 2c0:	ff cf       	rjmp	.-2      	; 0x2c0 <__stop_program>
